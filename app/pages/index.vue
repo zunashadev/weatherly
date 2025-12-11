@@ -110,9 +110,15 @@ onMounted(() => {
 
         <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">
           <div
-            class="flex gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
+            class="flex gap-4 rounded-md border border-white bg-white/20 px-4 py-4"
           >
-            <div>💧</div>
+            <div>
+              <Icon
+                name="tabler:droplet"
+                size="20"
+                class="inline-block flex-none"
+              />
+            </div>
             <div class="space-y-0">
               <p class="">Humidity</p>
               <p class="text-2xl font-medium">
@@ -122,9 +128,15 @@ onMounted(() => {
           </div>
 
           <div
-            class="flex gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
+            class="flex gap-4 rounded-md border border-white bg-white/20 px-4 py-4"
           >
-            <div>💨</div>
+            <div>
+              <Icon
+                name="tabler:wind"
+                size="20"
+                class="inline-block flex-none"
+              />
+            </div>
             <div class="space-y-0">
               <p class="">Wind</p>
               <p class="text-2xl font-medium">
