@@ -69,10 +69,10 @@ onMounted(() => {
 
     <!-- Start : Content -->
     <div
-      class="relative z-10 flex h-full min-h-[80dvh] w-full max-w-2xl flex-col p-4"
+      class="relative z-10 flex h-full min-h-[80dvh] w-full max-w-2xl flex-col p-2 md:p-4"
     >
       <div
-        class="flex h-full w-full flex-1 flex-col gap-8 rounded-3xl border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-8 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter"
+        class="flex h-full w-full flex-1 flex-col gap-12 rounded-3xl border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter md:p-8"
       >
         <!-- <h1 class="text-center text-2xl font-bold">Weatherly</h1> -->
 
@@ -98,15 +98,15 @@ onMounted(() => {
         <!-- Start : Weather -->
         <div
           v-if="weather && weather.location && weather.current"
-          class="flex flex-col gap-8 px-4"
+          class="flex flex-col gap-8 px-4 md:gap-8"
         >
-          <div class="flex justify-between">
+          <div class="flex justify-between gap-10">
             <!-- Temp & Country -->
-            <div class="flex flex-col gap-2">
-              <p class="text-7xl text-slate-800">
+            <div class="flex flex-col md:gap-2">
+              <p class="text-6xl text-slate-800 md:text-7xl">
                 {{ weather.current.temp_c }}°C
               </p>
-              <h2 class="text-xl">
+              <h2 class="text-lg md:text-xl">
                 {{ weather.location.name }}, {{ weather.location.country }}
               </h2>
             </div>
@@ -117,7 +117,7 @@ onMounted(() => {
                 :class="[
                   'wi',
                   weatherIcons[weather.current.condition.code] || 'wi-na',
-                  'text-[6rem] text-slate-800',
+                  'text-[4rem] text-slate-800 md:text-[6rem]',
                 ]"
               ></i>
             </div>
@@ -129,7 +129,7 @@ onMounted(() => {
             </p>
           </div>
 
-          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">
             <div
               class="flex gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
             >
