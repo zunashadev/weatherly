@@ -68,9 +68,11 @@ onMounted(() => {
     <!-- End : Background -->
 
     <!-- Start : Content -->
-    <div class="relative z-10 w-full max-w-2xl p-4">
+    <div
+      class="relative z-10 flex h-full min-h-[80dvh] w-full max-w-2xl flex-col p-4"
+    >
       <div
-        class="flex h-min w-full flex-col gap-8 rounded border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-6 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter"
+        class="flex h-full w-full flex-1 flex-col gap-8 rounded border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-6 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter"
       >
         <h1 class="mb-4 text-center text-2xl font-bold">Weatherly</h1>
 
@@ -94,18 +96,44 @@ onMounted(() => {
         <!-- End : Loading & Error -->
 
         <!-- Start : Weather -->
-        <div v-if="weather && weather.location && weather.current" class="px-4">
-          <h2 class="text-xl font-bold">
-            {{ weather.location.name }}, {{ weather.location.country }}
-          </h2>
-          <p class="text-gray-700">{{ weather.current.condition.text }}</p>
-          <p class="text-gray-700">🌡️ {{ weather.current.temp_c }}°C</p>
-          <p class="text-gray-700">
-            💧 Humidity: {{ weather.current.humidity }}%
-          </p>
-          <p class="text-gray-700">
-            💨 Wind: {{ weather.current.wind_kph }} kph
-          </p>
+        <div
+          v-if="weather && weather.location && weather.current"
+          class="flex flex-col gap-8 px-4"
+        >
+          <div class="flex justify-between">
+            <!-- Temp & Country -->
+            <div class="flex flex-col gap-2">
+              <p class="text-5xl text-slate-800">
+                {{ weather.current.temp_c }}°C
+              </p>
+              <h2 class="text-xl">
+                {{ weather.location.name }}, {{ weather.location.country }}
+              </h2>
+            </div>
+
+            <!-- Icon -->
+            <div>
+              <img
+                :src="
+                  weather.current.condition.icon.startsWith('//')
+                    ? 'https:' + weather.current.condition.icon
+                    : weather.current.condition.icon
+                "
+                :alt="weather.current.condition.text"
+                class="inline-block size-24 flex-none"
+              />
+            </div>
+          </div>
+
+          <div>
+            <p class="text-gray-700">{{ weather.current.condition.text }}</p>
+            <p class="text-gray-700">
+              💧 Humidity: {{ weather.current.humidity }}%
+            </p>
+            <p class="text-gray-700">
+              💨 Wind: {{ weather.current.wind_kph }} kph
+            </p>
+          </div>
         </div>
         <!-- End : Weather -->
       </div>
