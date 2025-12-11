@@ -68,25 +68,23 @@ onMounted(() => {
     <!-- End : Background -->
 
     <!-- Start : Content -->
-    <div class="relative z-10 p-4">
+    <div class="relative z-10 w-full max-w-2xl p-4">
       <div
-        class="h-min w-full max-w-lg rounded border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-6 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter"
+        class="flex h-min w-full flex-col gap-8 rounded border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-6 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter"
       >
-        <h1 class="mb-4 text-2xl font-bold">Weather App</h1>
+        <h1 class="mb-4 text-center text-2xl font-bold">Weatherly</h1>
 
         <!-- Start : Form Search -->
-        <form @submit.prevent="getWeather" class="mb-4">
+        <form
+          @submit.prevent="getWeather"
+          class="flex items-center justify-center gap-2"
+        >
           <input
             v-model="city"
             type="text"
             placeholder="Enter city"
-            class="w-full rounded-full border bg-blue-500 px-4 py-2"
+            class="w-full rounded-full border border-white bg-white/50 px-4 py-2 shadow-md shadow-slate-950/10"
           />
-          <button
-            class="mt-2 w-full rounded bg-blue-500 py-2 text-white hover:bg-blue-600"
-          >
-            Get Weather
-          </button>
         </form>
         <!-- End : Form Search -->
 
@@ -95,11 +93,8 @@ onMounted(() => {
         <div v-if="error" class="text-red-500">{{ error }}</div>
         <!-- End : Loading & Error -->
 
-        <!-- Start : Weather Card -->
-        <div
-          v-if="weather && weather.location && weather.current"
-          class="mt-4 rounded border bg-blue-50 p-4"
-        >
+        <!-- Start : Weather -->
+        <div v-if="weather && weather.location && weather.current" class="px-4">
           <h2 class="text-xl font-bold">
             {{ weather.location.name }}, {{ weather.location.country }}
           </h2>
@@ -112,7 +107,7 @@ onMounted(() => {
             💨 Wind: {{ weather.current.wind_kph }} kph
           </p>
         </div>
-        <!-- End : Weather Card -->
+        <!-- End : Weather -->
       </div>
     </div>
     <!-- End : Content -->
