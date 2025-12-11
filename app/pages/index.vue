@@ -169,9 +169,9 @@ onMounted(() => {
       <!-- Start : Current Weather -->
 
       <!-- Start : Forecast -->
-      <div v-if="weather && weather.forecast">
+      <template v-if="weather && weather.forecast">
         <WeatherForecast :forecast="weather.forecast" />
-      </div>
+      </template>
       <!-- End : Forecast -->
     </div>
   </div>
