@@ -51,117 +51,94 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative flex min-h-screen w-full items-center justify-center">
-    <!-- Start : Background -->
+  <div class="flex h-full min-h-[80dvh] w-full max-w-2xl flex-col p-2 md:p-4">
     <div
-      class="absolute inset-0 z-0"
-      :style="{
-        background: `
-          radial-gradient(ellipse 85% 65% at 8% 8%, rgba(175, 109, 255, 0.42), transparent 60%),
-          radial-gradient(ellipse 75% 60% at 75% 35%, rgba(255, 235, 170, 0.55), transparent 62%),
-          radial-gradient(ellipse 70% 60% at 15% 80%, rgba(255, 100, 180, 0.40), transparent 62%),
-          radial-gradient(ellipse 70% 60% at 92% 92%, rgba(120, 190, 255, 0.45), transparent 62%),
-          linear-gradient(180deg, #f7eaff 0%, #fde2ea 100%)
-        `,
-      }"
-    ></div>
-    <!-- End : Background -->
-
-    <!-- Start : Content -->
-    <div
-      class="relative z-10 flex h-full min-h-[80dvh] w-full max-w-2xl flex-col p-2 md:p-4"
+      class="flex h-full w-full flex-1 flex-col gap-12 rounded-3xl border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter md:p-8"
     >
-      <div
-        class="flex h-full w-full flex-1 flex-col gap-12 rounded-3xl border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter md:p-8"
+      <!-- Start : Form Search -->
+      <form
+        @submit.prevent="getWeather"
+        class="flex items-center justify-center gap-2"
       >
-        <!-- <h1 class="text-center text-2xl font-bold">Weatherly</h1> -->
+        <input
+          v-model="city"
+          type="text"
+          placeholder="Search Country, City, or Town"
+          class="w-full rounded-full border border-white bg-white/20 px-4 py-2 placeholder:text-slate-500"
+        />
+      </form>
+      <!-- End : Form Search -->
 
-        <!-- Start : Form Search -->
-        <form
-          @submit.prevent="getWeather"
-          class="flex items-center justify-center gap-2"
-        >
-          <input
-            v-model="city"
-            type="text"
-            placeholder="Search Country, City, or Town"
-            class="w-full rounded-full border border-white bg-white/20 px-4 py-2 placeholder:text-slate-500"
-          />
-        </form>
-        <!-- End : Form Search -->
+      <!-- Start : Loading & Error -->
+      <div v-if="loading" class="text-gray-500">Loading...</div>
+      <div v-if="error" class="text-red-500">{{ error }}</div>
+      <!-- End : Loading & Error -->
 
-        <!-- Start : Loading & Error -->
-        <div v-if="loading" class="text-gray-500">Loading...</div>
-        <div v-if="error" class="text-red-500">{{ error }}</div>
-        <!-- End : Loading & Error -->
-
-        <!-- Start : Weather -->
-        <div
-          v-if="weather && weather.location && weather.current"
-          class="flex flex-col gap-8 px-4 md:gap-8"
-        >
-          <div class="flex justify-between gap-10">
-            <!-- Temp & Country -->
-            <div class="flex flex-col md:gap-2">
-              <p class="text-6xl text-slate-800 md:text-7xl">
-                {{ weather.current.temp_c }}°C
-              </p>
-              <h2 class="text-lg md:text-xl">
-                {{ weather.location.name }}, {{ weather.location.country }}
-              </h2>
-            </div>
-
-            <!-- Icon -->
-            <div>
-              <i
-                :class="[
-                  'wi',
-                  weatherIcons[weather.current.condition.code] || 'wi-na',
-                  'text-[4rem] text-slate-800 md:text-[6rem]',
-                ]"
-              ></i>
-            </div>
-          </div>
-
-          <div>
-            <p class="uppercase text-gray-700">
-              {{ weather.current.condition.text }}
+      <!-- Start : Weather -->
+      <div
+        v-if="weather && weather.location && weather.current"
+        class="flex flex-col gap-8 px-4 md:gap-8"
+      >
+        <div class="flex justify-between gap-10">
+          <!-- Temp & Country -->
+          <div class="flex flex-col md:gap-2">
+            <p class="text-6xl text-slate-800 md:text-7xl">
+              {{ weather.current.temp_c }}°C
             </p>
+            <h2 class="text-lg md:text-xl">
+              {{ weather.location.name }}, {{ weather.location.country }}
+            </h2>
           </div>
 
-          <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">
-            <div
-              class="flex gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
-            >
-              <div>💧</div>
-              <div class="space-y-0">
-                <p class="">Humidity</p>
-                <p class="text-2xl font-medium">
-                  {{ weather.current.humidity }}%
-                </p>
-              </div>
-            </div>
+          <!-- Icon -->
+          <div>
+            <i
+              :class="[
+                'wi',
+                weatherIcons[weather.current.condition.code] || 'wi-na',
+                'text-[4rem] text-slate-800 md:text-[6rem]',
+              ]"
+            ></i>
+          </div>
+        </div>
 
-            <div
-              class="flex gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
-            >
-              <div>💨</div>
-              <div class="space-y-0">
-                <p class="">Wind</p>
-                <p class="text-2xl font-medium">
-                  {{ weather.current.wind_kph }} kph
-                </p>
-              </div>
+        <div>
+          <p class="uppercase text-gray-700">
+            {{ weather.current.condition.text }}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">
+          <div
+            class="flex gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
+          >
+            <div>💧</div>
+            <div class="space-y-0">
+              <p class="">Humidity</p>
+              <p class="text-2xl font-medium">
+                {{ weather.current.humidity }}%
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
+          >
+            <div>💨</div>
+            <div class="space-y-0">
+              <p class="">Wind</p>
+              <p class="text-2xl font-medium">
+                {{ weather.current.wind_kph }} kph
+              </p>
             </div>
           </div>
         </div>
-        <!-- End : Weather -->
-
-        <!-- Start : Forecast -->
-        <WeatherForecast />
-        <!-- End : Forecast -->
       </div>
+      <!-- End : Weather -->
+
+      <!-- Start : Forecast -->
+      <WeatherForecast />
+      <!-- End : Forecast -->
     </div>
-    <!-- End : Content -->
   </div>
 </template>
