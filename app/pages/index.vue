@@ -72,9 +72,9 @@ onMounted(() => {
       class="relative z-10 flex h-full min-h-[80dvh] w-full max-w-2xl flex-col p-4"
     >
       <div
-        class="flex h-full w-full flex-1 flex-col gap-8 rounded border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-6 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter"
+        class="flex h-full w-full flex-1 flex-col gap-8 rounded-3xl border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-8 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter"
       >
-        <h1 class="mb-4 text-center text-2xl font-bold">Weatherly</h1>
+        <!-- <h1 class="text-center text-2xl font-bold">Weatherly</h1> -->
 
         <!-- Start : Form Search -->
         <form
@@ -84,8 +84,8 @@ onMounted(() => {
           <input
             v-model="city"
             type="text"
-            placeholder="Enter city"
-            class="w-full rounded-full border border-white bg-white/50 px-4 py-2 shadow-md shadow-slate-950/10"
+            placeholder="Search Country, City, or Town"
+            class="w-full rounded-full border border-white bg-white/20 px-4 py-2 placeholder:text-slate-500"
           />
         </form>
         <!-- End : Form Search -->
@@ -103,7 +103,7 @@ onMounted(() => {
           <div class="flex justify-between">
             <!-- Temp & Country -->
             <div class="flex flex-col gap-2">
-              <p class="text-5xl text-slate-800">
+              <p class="text-7xl text-slate-800">
                 {{ weather.current.temp_c }}°C
               </p>
               <h2 class="text-xl">
@@ -126,13 +126,35 @@ onMounted(() => {
           </div>
 
           <div>
-            <p class="text-gray-700">{{ weather.current.condition.text }}</p>
-            <p class="text-gray-700">
-              💧 Humidity: {{ weather.current.humidity }}%
+            <p class="uppercase text-gray-700">
+              {{ weather.current.condition.text }}
             </p>
-            <p class="text-gray-700">
-              💨 Wind: {{ weather.current.wind_kph }} kph
-            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div
+              class="flex gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
+            >
+              <div>💧</div>
+              <div class="space-y-0">
+                <p class="">Humidity</p>
+                <p class="text-2xl font-medium">
+                  {{ weather.current.humidity }}%
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
+            >
+              <div>💨</div>
+              <div class="space-y-0">
+                <p class="">Wind</p>
+                <p class="text-2xl font-medium">
+                  {{ weather.current.wind_kph }} kph
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         <!-- End : Weather -->
