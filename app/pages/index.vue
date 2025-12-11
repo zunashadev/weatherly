@@ -113,15 +113,13 @@ onMounted(() => {
 
             <!-- Icon -->
             <div>
-              <img
-                :src="
-                  weather.current.condition.icon.startsWith('//')
-                    ? 'https:' + weather.current.condition.icon
-                    : weather.current.condition.icon
-                "
-                :alt="weather.current.condition.text"
-                class="inline-block size-24 flex-none"
-              />
+              <i
+                :class="[
+                  'wi',
+                  weatherIcons[weather.current.condition.code] || 'wi-na',
+                  'text-[6rem] text-slate-800',
+                ]"
+              ></i>
             </div>
           </div>
 
@@ -131,7 +129,7 @@ onMounted(() => {
             </p>
           </div>
 
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div
               class="flex gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
             >

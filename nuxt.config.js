@@ -5,6 +5,11 @@ export default defineNuxtConfig({
 
   modules: ["@nuxtjs/tailwindcss", "@nuxt/icon"],
 
+  css: [
+    "weather-icons/css/weather-icons.css",
+    // "weather-icons/css/weather-icons-wind.css",
+  ],
+
   runtimeConfig: {
     public: {
       weatherApiKey: process.env.WEATHER_API_KEY,
