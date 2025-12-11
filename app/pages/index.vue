@@ -69,9 +69,30 @@ onMounted(() => {
       </form>
       <!-- End : Form Search -->
 
+      <!-- Start : Current Weather -->
       <!-- Start : Loading & Error -->
-      <div v-if="loading" class="text-gray-500">Loading...</div>
-      <div v-if="error" class="text-red-500">{{ error }}</div>
+      <template v-if="loading">
+        <div class="flex flex-1 items-center justify-center">
+          <Icon
+            name="line-md:loading-twotone-loop"
+            size="32"
+            class="inline-block flex-none text-slate-800"
+          />
+        </div>
+      </template>
+
+      <template v-if="error">
+        <div class="flex flex-1 items-center justify-center">
+          <div class="flex flex-col items-center justify-center gap-2">
+            <Icon
+              name="line-md:brake-alert-twotone"
+              size="56"
+              class="inline-block flex-none text-red-600"
+            />
+            <p class="text-red-600">{{ error }}</p>
+          </div>
+        </div>
+      </template>
       <!-- End : Loading & Error -->
 
       <!-- Start : Weather -->
@@ -121,9 +142,7 @@ onMounted(() => {
             </div>
             <div class="space-y-0">
               <p class="">Humidity</p>
-              <p class="text-2xl font-medium">
-                {{ weather.current.humidity }}%
-              </p>
+              <p class="text-2xl font-bold">{{ weather.current.humidity }}%</p>
             </div>
           </div>
 
@@ -139,7 +158,7 @@ onMounted(() => {
             </div>
             <div class="space-y-0">
               <p class="">Wind</p>
-              <p class="text-2xl font-medium">
+              <p class="text-2xl font-bold">
                 {{ weather.current.wind_kph }} kph
               </p>
             </div>
@@ -147,6 +166,7 @@ onMounted(() => {
         </div>
       </div>
       <!-- End : Weather -->
+      <!-- Start : Current Weather -->
 
       <!-- Start : Forecast -->
       <WeatherForecast />
