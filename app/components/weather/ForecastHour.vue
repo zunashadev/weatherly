@@ -140,7 +140,7 @@ const isCurrentHour = (timeStr) => {
               ]"
             ></i>
             <p class="text-center text-xs">{{ hour.condition.text }}</p>
-            <p class="text-sm">🌡️ {{ hour.temp_c }}°C</p>
+            <p class="text-sm">{{ hour.temp_c }}°</p>
           </div>
         </template>
       </div>

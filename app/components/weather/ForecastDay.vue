@@ -21,7 +21,7 @@ const props = defineProps({
           ]"
         ></i>
         <p class="mb-1">{{ day.day.condition.text }}</p>
-        <p>🌡️ {{ day.day.mintemp_c }}°C - {{ day.day.maxtemp_c }}°C</p>
+        <p>{{ day.day.mintemp_c }}° - {{ day.day.maxtemp_c }}°</p>
       </div>
     </div>
   </div>
