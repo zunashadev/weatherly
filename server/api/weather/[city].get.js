@@ -5,7 +5,10 @@ export default defineEventHandler(async (event) => {
 
   try {
     const weather = await $fetch(
-      `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`,
+      // Current
+      // `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`,
+      // Forecast (+ Current)
+      `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=3&aqi=no&alerts=no`,
     );
     return weather;
   } catch (err) {

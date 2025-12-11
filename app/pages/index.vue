@@ -4,7 +4,7 @@ const weather = ref(null);
 const error = ref("");
 const loading = ref(false);
 
-// Function untuk fetch weather berdasarkan nama kota atau koordinat
+// Function - fetch weather berdasarkan nama kota/koordinat
 const fetchWeather = async (query) => {
   loading.value = true;
   error.value = "";
@@ -20,7 +20,7 @@ const fetchWeather = async (query) => {
   }
 };
 
-// Function dipanggil saat klik search
+// Function - search
 const getWeather = async () => {
   if (!city.value) {
     error.value = "Please enter a city";
@@ -169,7 +169,9 @@ onMounted(() => {
       <!-- Start : Current Weather -->
 
       <!-- Start : Forecast -->
-      <WeatherForecast />
+      <div v-if="weather && weather.forecast">
+        <WeatherForecast :forecast="weather.forecast" />
+      </div>
       <!-- End : Forecast -->
     </div>
   </div>
