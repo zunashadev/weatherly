@@ -51,9 +51,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex h-full min-h-[80dvh] w-full max-w-2xl flex-col p-2 md:p-4">
+  <div class="flex h-[80dvh] w-full max-w-2xl flex-col p-2 md:p-4">
     <div
-      class="flex h-full w-full flex-1 flex-col gap-12 rounded-3xl border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter md:p-8"
+      class="scrollbar-hide flex w-full flex-1 flex-col gap-12 overflow-auto rounded-3xl border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter md:p-8"
     >
       <!-- Start : Form Search -->
       <form
@@ -168,11 +168,17 @@ onMounted(() => {
       <!-- End : Weather -->
       <!-- Start : Current Weather -->
 
-      <!-- Start : Forecast -->
+      <!-- Start : Forecast Today -->
       <template v-if="weather && weather.forecast">
-        <WeatherForecast :forecast="weather.forecast" />
+        <WeatherForecastHour :forecast="weather.forecast" />
       </template>
-      <!-- End : Forecast -->
+      <!-- End : Forecast Today -->
+
+      <!-- Start : Forecast 3 Days -->
+      <template v-if="weather && weather.forecast">
+        <WeatherForecastDay :forecast="weather.forecast" />
+      </template>
+      <!-- End : Forecast 3 Days -->
     </div>
   </div>
 </template>

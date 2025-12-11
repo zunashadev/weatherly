@@ -15,10 +15,43 @@ const displayHours = [
 
 const filteredHours = computed(() => {
   if (!props.forecast?.forecastday?.length) return [];
-  return props.forecast.forecastday[0].hour.filter((hour) => {
+
+  const hours = props.forecast.forecastday[0].hour;
+  const nowHour = new Date().getHours();
+
+  // Mulai dengan jam target: -1, 0, +1, +2, +3
+  let targetHours = [
+    nowHour - 1,
+    nowHour,
+    nowHour + 1,
+    nowHour + 2,
+    nowHour + 3,
+  ];
+
+  // Pastikan jam valid 0-23
+  targetHours = targetHours.map((h) => Math.min(Math.max(h, 0), 23));
+
+  // Filter jam yang tersedia
+  let selected = hours.filter((hour) => {
     const hourInt = parseInt(hour.time.split(" ")[1].split(":")[0]);
-    return displayHours.includes(hourInt);
+    return targetHours.includes(hourInt);
   });
+
+  // Jika hasil kurang dari 5, tambahkan jam sebelumnya agar total = 5
+  while (selected.length < 5) {
+    const firstHourInt = parseInt(selected[0].time.split(" ")[1].split(":")[0]);
+    const prevHour = hours.find(
+      (hour) =>
+        parseInt(hour.time.split(" ")[1].split(":")[0]) === firstHourInt - 1,
+    );
+    if (prevHour) {
+      selected.unshift(prevHour);
+    } else {
+      break; // tidak ada jam sebelumnya
+    }
+  }
+
+  return selected;
 });
 
 const isCurrentHour = (timeStr) => {
@@ -29,7 +62,6 @@ const isCurrentHour = (timeStr) => {
 
 <template>
   <div class="flex flex-col gap-8 px-4">
-    <!-- Start : Forecast Today -->
     <template v-if="forecast && forecast.forecastday.length">
       <div class="grid grid-cols-5 gap-1">
         <template v-for="hour in filteredHours" :key="hour.time">
@@ -53,27 +85,5 @@ const isCurrentHour = (timeStr) => {
         </template>
       </div>
     </template>
-    <!-- End : Forecast Today -->
-
-    <!-- Start : Forecast 3 Days -->
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-      <div
-        v-for="day in forecast.forecastday"
-        :key="day.date"
-        class="rounded-md border border-white bg-white/20 p-4 text-center"
-      >
-        <p class="mb-2 font-medium">{{ day.date }}</p>
-        <i
-          :class="[
-            'wi',
-            weatherIcons[day.day.condition.code] || 'wi-na',
-            'mb-2 text-3xl',
-          ]"
-        ></i>
-        <p class="mb-1">{{ day.day.condition.text }}</p>
-        <p>🌡️ {{ day.day.mintemp_c }}°C - {{ day.day.maxtemp_c }}°C</p>
-      </div>
-    </div>
-    <!-- End : Forecast 3 Days -->
   </div>
 </template>
