@@ -76,7 +76,10 @@ onMounted(() => {
     <div v-if="error" class="text-red-500">{{ error }}</div>
 
     <!-- Weather Card -->
-    <div v-if="weather" class="mt-4 rounded border bg-blue-50 p-4">
+    <div
+      v-if="weather && weather.location && weather.current"
+      class="mt-4 rounded border bg-blue-50 p-4"
+    >
       <h2 class="text-xl font-bold">
         {{ weather.location.name }}, {{ weather.location.country }}
       </h2>
