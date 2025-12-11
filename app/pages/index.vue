@@ -156,6 +156,10 @@ onMounted(() => {
           </div>
         </div>
         <!-- End : Weather -->
+
+        <!-- Start : Forecast -->
+        <WeatherForecast />
+        <!-- End : Forecast -->
       </div>
     </div>
     <!-- End : Content -->
