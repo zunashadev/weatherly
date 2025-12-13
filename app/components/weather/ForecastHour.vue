@@ -118,6 +118,9 @@ const isCurrentHour = (timeStr) => {
   const hour = parseInt(timeStr.split(" ")[1].split(":")[0]);
   return hour === new Date().getHours();
 };
+
+// 🔹 Get Weather Icon
+const { getWeatherIcon } = useWeatherIcon();
 </script>
 
 <template>
@@ -132,13 +135,13 @@ const isCurrentHour = (timeStr) => {
             <p class="text-sm">
               {{ hour.time ? hour.time.split(" ")[1] : "--:--" }}
             </p>
-            <i
-              :class="[
-                'wi',
-                weatherIcons[hour.condition.code] || 'wi-na',
-                'text-2xl',
-              ]"
-            ></i>
+
+            <img
+              :src="getWeatherIcon(hour.condition.code, hour.is_day)"
+              alt="Weather icon"
+              class="size-12"
+            />
+
             <p class="text-center text-xs">{{ hour.condition.text }}</p>
             <p class="text-sm">{{ hour.temp_c }}°</p>
           </div>

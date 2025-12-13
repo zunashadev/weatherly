@@ -93,12 +93,15 @@ const formattedDay = computed(() => {
     return "";
   }
 });
+
+// 🔹 Get Weather Icon
+const { getWeatherIcon } = useWeatherIcon();
 </script>
 
 <template>
   <div class="flex h-[80dvh] w-full max-w-2xl flex-col p-2 md:p-4">
     <div
-      class="scrollbar-hide flex w-full flex-1 flex-col gap-12 overflow-auto rounded-3xl border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter md:p-8"
+      class="flex w-full flex-1 flex-col gap-12 overflow-auto rounded-3xl border border-white bg-gray-500 bg-opacity-10 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter scrollbar-hide md:p-8"
     >
       <!-- Start : Form Search -->
       <CommonSearch @search="getWeather" />
@@ -166,13 +169,16 @@ const formattedDay = computed(() => {
 
             <!-- Icon -->
             <div>
-              <i
-                :class="[
-                  'wi',
-                  weatherIcons[weather.current.condition.code] || 'wi-na',
-                  'text-[3rem] text-slate-800 md:text-[4rem]',
-                ]"
-              ></i>
+              <img
+                :src="
+                  getWeatherIcon(
+                    weather.current.condition.code,
+                    weather.current.is_day,
+                  )
+                "
+                alt="Weather icon"
+                class="size-40"
+              />
             </div>
           </div>
 
