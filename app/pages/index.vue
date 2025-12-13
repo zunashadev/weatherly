@@ -101,7 +101,7 @@ const { getWeatherIcon } = useWeatherIcon();
 <template>
   <div class="flex h-[80dvh] w-full max-w-2xl flex-col p-2 md:p-4">
     <div
-      class="flex w-full flex-1 flex-col gap-12 overflow-auto rounded-3xl border border-white bg-slate-900/5 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter scrollbar-hide md:p-8"
+      class="flex w-full flex-1 flex-col gap-12 overflow-auto rounded-3xl border border-white bg-white/10 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter scrollbar-hide md:p-8"
     >
       <!-- Start : Form Search -->
       <CommonSearch @search="getWeather" />
