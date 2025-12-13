@@ -9,11 +9,13 @@ const { getWeatherIcon } = useWeatherIcon();
 
 <template>
   <div class="px-4">
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div
+      class="grid grid-cols-1 divide-y divide-white rounded-md border border-white bg-pink-500 bg-white/20 p-2 md:grid-cols-3 md:divide-x md:divide-y-0"
+    >
       <div
         v-for="day in forecast.forecastday"
         :key="day.date"
-        class="rounded-md border border-white bg-white/20 p-4 text-center"
+        class="flex flex-col items-center justify-center p-4 text-center"
       >
         <p class="mb-2 font-medium">{{ day.date }}</p>
 
@@ -23,8 +25,12 @@ const { getWeatherIcon } = useWeatherIcon();
           class="size-12"
         />
 
-        <p class="mb-1">{{ day.day.condition.text }}</p>
-        <p>{{ day.day.mintemp_c }}° - {{ day.day.maxtemp_c }}°</p>
+        <p class="hidden text-center text-xs capitalize md:block">
+          {{ day.day.condition.text }}
+        </p>
+        <p class="text-sm">
+          {{ day.day.mintemp_c }}° - {{ day.day.maxtemp_c }}°
+        </p>
       </div>
     </div>
   </div>

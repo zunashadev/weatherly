@@ -107,7 +107,7 @@ const { getWeatherIcon } = useWeatherIcon();
       <CommonSearch @search="getWeather" />
       <!-- End : Form Search -->
 
-      <div class="flex flex-col gap-8">
+      <div class="flex flex-1 flex-col gap-8">
         <!-- Start : Current Weather -->
         <!-- Start : Loading & Error -->
         <template v-if="loading">
@@ -139,36 +139,40 @@ const { getWeatherIcon } = useWeatherIcon();
           v-if="weather && weather.location && weather.current"
           class="flex flex-col gap-8 px-4 md:gap-8"
         >
-          <div class="flex justify-between gap-10">
-            <!-- Temp & Country -->
-            <div class="flex flex-col md:gap-4">
-              <div class="flex items-center gap-3">
-                <div>
-                  <Icon
-                    name="tabler:map-pin"
-                    size="24"
-                    class="inline-block flex-none"
-                  />
-                </div>
-                <div>
-                  <h2 class="text-lg">
-                    {{ weather.location.name }}, {{ weather.location.country }}
-                  </h2>
-                  <p class="">{{ formattedDay }}</p>
-                </div>
-              </div>
-              <div class="flex flex-col gap-1">
-                <p class="text-6xl text-slate-800 md:text-7xl">
+          <div class="flex w-full flex-col gap-8 md:gap-8">
+            <div class="flex items-center gap-2">
+              <Icon
+                name="tabler:map-pin"
+                size="20"
+                class="inline-block flex-none"
+              />
+              <h2 class="text-lg">
+                {{ weather.location.name }}, {{ weather.location.country }}
+              </h2>
+            </div>
+            <div class="flex w-full items-center justify-between">
+              <div
+                class="flex w-full flex-col items-center justify-center gap-4"
+              >
+                <p class="text-lg font-medium">{{ formattedDay }}</p>
+                <img
+                  :src="
+                    getWeatherIcon(
+                      weather.current.condition.code,
+                      weather.current.is_day,
+                    )
+                  "
+                  alt="Weather icon"
+                  class="size-44 md:hidden"
+                />
+                <p class="text-6xl font-bold text-slate-800 md:text-7xl">
                   {{ weather.current.temp_c }}°C
                 </p>
+
                 <p class="uppercase text-gray-700">
                   {{ weather.current.condition.text }}
                 </p>
               </div>
-            </div>
-
-            <!-- Icon -->
-            <div>
               <img
                 :src="
                   getWeatherIcon(
@@ -177,12 +181,12 @@ const { getWeatherIcon } = useWeatherIcon();
                   )
                 "
                 alt="Weather icon"
-                class="size-40"
+                class="hidden size-44 md:inline-block"
               />
             </div>
           </div>
 
-          <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">
+          <div class="grid grid-cols-1 gap-1 md:grid-cols-2 md:gap-1">
             <div
               class="flex gap-4 rounded-md border border-white bg-white/20 px-4 py-4"
             >

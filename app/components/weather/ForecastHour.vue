@@ -129,7 +129,7 @@ const { getWeatherIcon } = useWeatherIcon();
       <div class="grid grid-cols-5 gap-1">
         <template v-for="hour in filteredHours" :key="hour.time">
           <div
-            class="flex flex-none flex-col items-center justify-center gap-3 rounded-md border border-white p-2"
+            class="flex flex-none flex-col items-center justify-center gap-0 rounded-md border border-white p-2 md:gap-3"
             :class="[isCurrentHour(hour.time) ? 'bg-white/75' : 'bg-white/20']"
           >
             <p class="text-sm">
@@ -142,7 +142,9 @@ const { getWeatherIcon } = useWeatherIcon();
               class="size-12"
             />
 
-            <p class="text-center text-xs">{{ hour.condition.text }}</p>
+            <p class="hidden text-center text-xs capitalize md:block">
+              {{ hour.condition.text }}
+            </p>
             <p class="text-sm">{{ hour.temp_c }}°</p>
           </div>
         </template>
