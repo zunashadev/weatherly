@@ -101,7 +101,7 @@ const { getWeatherIcon } = useWeatherIcon();
 <template>
   <div class="flex h-[80dvh] w-full max-w-2xl flex-col p-2 md:p-4">
     <div
-      class="flex w-full flex-1 flex-col gap-12 overflow-auto rounded-3xl border border-white bg-white/20 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter scrollbar-hide md:p-8"
+      class="flex w-full flex-1 flex-col gap-12 overflow-auto rounded-3xl border border-white bg-slate-900/10 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter scrollbar-hide md:p-8"
     >
       <!-- Start : Form Search -->
       <CommonSearch @search="getWeather" />
@@ -188,7 +188,7 @@ const { getWeatherIcon } = useWeatherIcon();
 
           <div class="grid grid-cols-2 gap-1 md:grid-cols-2 md:gap-1">
             <div
-              class="flex items-center gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
+              class="flex items-center gap-2 rounded-md border border-white bg-white/10 px-4 py-4"
             >
               <Icon
                 name="tabler:droplet"
@@ -204,7 +204,7 @@ const { getWeatherIcon } = useWeatherIcon();
             </div>
 
             <div
-              class="flex items-center gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
+              class="flex items-center gap-2 rounded-md border border-white bg-white/10 px-4 py-4"
             >
               <Icon
                 name="tabler:wind"

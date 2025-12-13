@@ -10,7 +10,7 @@ const { getWeatherIcon } = useWeatherIcon();
 <template>
   <div class="px-4">
     <div
-      class="grid grid-cols-1 divide-y divide-white rounded-md border border-white bg-pink-500 bg-white/20 p-2 md:grid-cols-3 md:divide-x md:divide-y-0"
+      class="grid grid-cols-1 divide-y divide-white rounded-md border border-white bg-pink-500 bg-white/10 p-2 md:grid-cols-3 md:divide-x md:divide-y-0"
     >
       <div
         v-for="day in forecast.forecastday"
