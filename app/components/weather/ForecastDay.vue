@@ -17,7 +17,7 @@ const { getWeatherIcon } = useWeatherIcon();
         :key="day.date"
         class="flex flex-col items-center justify-center p-4 text-center"
       >
-        <p class="mb-2 font-medium">{{ day.date }}</p>
+        <p class="mb-2 font-medium text-slate-900/50">{{ day.date }}</p>
 
         <img
           :src="getWeatherIcon(day.day.condition.code, day.day.is_day)"
@@ -28,7 +28,7 @@ const { getWeatherIcon } = useWeatherIcon();
         <p class="hidden text-center text-xs capitalize md:block">
           {{ day.day.condition.text }}
         </p>
-        <p class="text-sm">
+        <p class="text-sm font-medium">
           {{ day.day.mintemp_c }}° - {{ day.day.maxtemp_c }}°
         </p>
       </div>

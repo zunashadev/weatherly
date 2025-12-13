@@ -152,7 +152,7 @@ const { getWeatherIcon } = useWeatherIcon();
             </div>
             <div class="flex w-full items-center justify-between">
               <div
-                class="flex w-full flex-col items-center justify-center gap-4"
+                class="flex w-full flex-col items-center justify-center gap-4 md:items-start"
               >
                 <p class="text-lg font-medium">{{ formattedDay }}</p>
                 <img
@@ -188,36 +188,32 @@ const { getWeatherIcon } = useWeatherIcon();
 
           <div class="grid grid-cols-1 gap-1 md:grid-cols-2 md:gap-1">
             <div
-              class="flex gap-4 rounded-md border border-white bg-white/20 px-4 py-4"
+              class="flex items-center gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
             >
-              <div>
-                <Icon
-                  name="tabler:droplet"
-                  size="20"
-                  class="inline-block flex-none"
-                />
-              </div>
+              <Icon
+                name="tabler:droplet"
+                size="20"
+                class="inline-block flex-none"
+              />
               <div class="space-y-0">
-                <p class="">Humidity</p>
-                <p class="text-2xl font-bold">
+                <p class="text-slate-900/50">Humidity</p>
+                <p class="text-xl font-medium">
                   {{ weather.current.humidity }}%
                 </p>
               </div>
             </div>
 
             <div
-              class="flex gap-4 rounded-md border border-white bg-white/20 px-4 py-4"
+              class="flex items-center gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
             >
-              <div>
-                <Icon
-                  name="tabler:wind"
-                  size="20"
-                  class="inline-block flex-none"
-                />
-              </div>
+              <Icon
+                name="tabler:wind"
+                size="20"
+                class="inline-block flex-none"
+              />
               <div class="space-y-0">
-                <p class="">Wind</p>
-                <p class="text-2xl font-bold">
+                <p class="text-slate-900/50">Wind</p>
+                <p class="text-xl font-medium">
                   {{ weather.current.wind_kph }} kph
                 </p>
               </div>

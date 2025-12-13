@@ -132,7 +132,7 @@ const { getWeatherIcon } = useWeatherIcon();
             class="flex flex-none flex-col items-center justify-center gap-0 rounded-md border border-white p-2 md:gap-3"
             :class="[isCurrentHour(hour.time) ? 'bg-white/75' : 'bg-white/20']"
           >
-            <p class="text-sm">
+            <p class="text-sm text-slate-900/50">
               {{ hour.time ? hour.time.split(" ")[1] : "--:--" }}
             </p>
 
@@ -145,7 +145,7 @@ const { getWeatherIcon } = useWeatherIcon();
             <p class="hidden text-center text-xs capitalize md:block">
               {{ hour.condition.text }}
             </p>
-            <p class="text-sm">{{ hour.temp_c }}°</p>
+            <p class="text-sm font-medium">{{ hour.temp_c }}°</p>
           </div>
         </template>
       </div>
