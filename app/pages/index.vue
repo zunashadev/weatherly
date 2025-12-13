@@ -186,7 +186,7 @@ const { getWeatherIcon } = useWeatherIcon();
             </div>
           </div>
 
-          <div class="grid grid-cols-1 gap-1 md:grid-cols-2 md:gap-1">
+          <div class="grid grid-cols-2 gap-1 md:grid-cols-2 md:gap-1">
             <div
               class="flex items-center gap-2 rounded-md border border-white bg-white/20 px-4 py-4"
             >
