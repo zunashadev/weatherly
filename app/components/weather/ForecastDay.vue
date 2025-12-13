@@ -15,22 +15,23 @@ const { getWeatherIcon } = useWeatherIcon();
       <div
         v-for="day in forecast.forecastday"
         :key="day.date"
-        class="flex flex-col items-center justify-center p-4 text-center"
+        class="flex items-center justify-center p-4 text-center md:flex-col"
       >
-        <p class="mb-2 font-medium text-slate-900/50">{{ day.date }}</p>
+        <p class="mb-2 w-full font-medium text-slate-900/50">{{ day.date }}</p>
 
-        <img
-          :src="getWeatherIcon(day.day.condition.code, day.day.is_day)"
-          alt="Weather icon"
-          class="size-12"
-        />
-
-        <p class="hidden text-center text-xs capitalize md:block">
-          {{ day.day.condition.text }}
-        </p>
-        <p class="text-sm font-medium">
-          {{ day.day.mintemp_c }}° - {{ day.day.maxtemp_c }}°
-        </p>
+        <div class="flex w-full flex-col items-center justify-center">
+          <img
+            :src="getWeatherIcon(day.day.condition.code, day.day.is_day)"
+            alt="Weather icon"
+            class="size-16"
+          />
+          <p class="hidden text-center text-xs capitalize md:block">
+            {{ day.day.condition.text }}
+          </p>
+          <p class="text-sm font-medium">
+            {{ day.day.mintemp_c }}° - {{ day.day.maxtemp_c }}°
+          </p>
+        </div>
       </div>
     </div>
   </div>
