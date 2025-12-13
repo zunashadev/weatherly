@@ -145,7 +145,7 @@ const { getWeatherIcon } = useWeatherIcon();
             <p class="hidden text-center text-xs capitalize md:block">
               {{ hour.condition.text }}
             </p>
-            <p class="text-sm font-medium">{{ hour.temp_c }}°</p>
+            <p class="text-sm font-medium md:text-base">{{ hour.temp_c }}°</p>
           </div>
         </template>
       </div>

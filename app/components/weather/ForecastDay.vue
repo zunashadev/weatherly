@@ -28,7 +28,7 @@ const { getWeatherIcon } = useWeatherIcon();
           <p class="hidden text-center text-xs capitalize md:block">
             {{ day.day.condition.text }}
           </p>
-          <p class="text-sm font-medium">
+          <p class="text-sm font-medium md:text-base">
             {{ day.day.mintemp_c }}° - {{ day.day.maxtemp_c }}°
           </p>
         </div>
