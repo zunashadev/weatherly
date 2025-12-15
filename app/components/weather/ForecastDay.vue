@@ -17,7 +17,7 @@ const { getWeatherIcon } = useWeatherIcon();
         :key="day.date"
         class="flex items-center justify-center p-4 text-center md:flex-col"
       >
-        <p class="mb-2 w-full font-medium text-white">{{ day.date }}</p>
+        <p class="mb-2 w-full font-medium text-white/50">{{ day.date }}</p>
 
         <div class="flex w-full flex-col items-center justify-center">
           <img

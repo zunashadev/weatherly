@@ -130,9 +130,9 @@ const { getWeatherIcon } = useWeatherIcon();
         <template v-for="hour in filteredHours" :key="hour.time">
           <div
             class="flex flex-none flex-col items-center justify-center gap-0 rounded-md p-2 md:gap-3"
-            :class="[isCurrentHour(hour.time) ? 'bg-white/50' : 'bg-white/10']"
+            :class="[isCurrentHour(hour.time) ? 'bg-white/30' : 'bg-white/10']"
           >
-            <p class="text-sm text-white">
+            <p class="text-sm text-white/50">
               {{ hour.time ? hour.time.split(" ")[1] : "--:--" }}
             </p>
 
