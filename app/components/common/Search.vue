@@ -28,7 +28,11 @@ function getWeather() {
         <div
           class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-2 peer-disabled:pointer-events-none peer-disabled:opacity-50"
         >
-          <Icon name="tabler:search" size="20" class="inline-block flex-none" />
+          <Icon
+            name="tabler:search"
+            size="20"
+            class="inline-block flex-none text-white/50"
+          />
         </div>
       </div>
     </form>
