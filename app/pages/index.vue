@@ -99,9 +99,9 @@ const { getWeatherIcon } = useWeatherIcon();
 </script>
 
 <template>
-  <div class="flex h-[80dvh] w-full max-w-2xl flex-col p-2 md:p-4">
+  <div class="flex h-[90dvh] w-full max-w-2xl flex-col p-2 md:p-4">
     <div
-      class="flex w-full flex-1 flex-col gap-12 overflow-auto rounded-3xl bg-white/30 bg-clip-padding p-4 text-slate-800 shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter scrollbar-hide md:p-8"
+      class="flex w-full flex-1 flex-col gap-12 overflow-auto rounded-3xl bg-white/10 bg-clip-padding p-4 text-white shadow-md shadow-slate-950/10 backdrop-blur backdrop-contrast-100 backdrop-saturate-100 backdrop-filter scrollbar-hide md:p-8"
     >
       <!-- Start : Form Search -->
       <CommonSearch @search="getWeather" />
@@ -115,7 +115,7 @@ const { getWeatherIcon } = useWeatherIcon();
             <Icon
               name="line-md:loading-twotone-loop"
               size="32"
-              class="inline-block flex-none text-slate-800"
+              class="inline-block flex-none text-white"
             />
           </div>
         </template>
@@ -165,11 +165,11 @@ const { getWeatherIcon } = useWeatherIcon();
                   alt="Weather icon"
                   class="size-44 md:hidden"
                 />
-                <p class="text-6xl font-semibold text-slate-800 md:text-7xl">
+                <p class="text-6xl font-semibold text-white md:text-7xl">
                   {{ weather.current.temp_c }}°C
                 </p>
 
-                <p class="uppercase text-gray-700">
+                <p class="uppercase text-white">
                   {{ weather.current.condition.text }}
                 </p>
               </div>
@@ -188,7 +188,7 @@ const { getWeatherIcon } = useWeatherIcon();
 
           <div class="grid grid-cols-2 gap-1 md:grid-cols-2 md:gap-1">
             <div
-              class="flex items-center gap-2 rounded-md border border-white bg-white/10 px-4 py-4"
+              class="flex items-center gap-2 rounded-md bg-white/10 px-4 py-4"
             >
               <Icon
                 name="tabler:droplet"
@@ -196,7 +196,7 @@ const { getWeatherIcon } = useWeatherIcon();
                 class="inline-block flex-none"
               />
               <div class="space-y-0">
-                <p class="text-slate-900/50">Humidity</p>
+                <p class="text-white/50">Humidity</p>
                 <p class="text-xl font-medium">
                   {{ weather.current.humidity }}%
                 </p>
@@ -204,7 +204,7 @@ const { getWeatherIcon } = useWeatherIcon();
             </div>
 
             <div
-              class="flex items-center gap-2 rounded-md border border-white bg-white/10 px-4 py-4"
+              class="flex items-center gap-2 rounded-md bg-white/10 px-4 py-4"
             >
               <Icon
                 name="tabler:wind"
@@ -212,7 +212,7 @@ const { getWeatherIcon } = useWeatherIcon();
                 class="inline-block flex-none"
               />
               <div class="space-y-0">
-                <p class="text-slate-900/50">Wind</p>
+                <p class="text-white/50">Wind</p>
                 <p class="text-xl font-medium">
                   {{ weather.current.wind_kph }} kph
                 </p>

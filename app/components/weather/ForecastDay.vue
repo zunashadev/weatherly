@@ -10,14 +10,14 @@ const { getWeatherIcon } = useWeatherIcon();
 <template>
   <div class="px-4">
     <div
-      class="grid grid-cols-1 divide-y divide-white rounded-md border border-white bg-pink-500 bg-white/10 p-2 md:grid-cols-3 md:divide-x md:divide-y-0"
+      class="grid grid-cols-1 divide-y divide-white/10 rounded-md bg-pink-500 bg-white/10 p-2 md:grid-cols-3 md:divide-x md:divide-y-0"
     >
       <div
         v-for="day in forecast.forecastday"
         :key="day.date"
         class="flex items-center justify-center p-4 text-center md:flex-col"
       >
-        <p class="mb-2 w-full font-medium text-slate-900/50">{{ day.date }}</p>
+        <p class="mb-2 w-full font-medium text-white">{{ day.date }}</p>
 
         <div class="flex w-full flex-col items-center justify-center">
           <img
